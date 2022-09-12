@@ -1,0 +1,29 @@
+ spring:
+   cloud:
+     azure:
+       eventhubs:
+         connection-string: Endpoint=sb://eventhubrajiv.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=09wrE5UoKZ7KZeVEqJPRSRiRp8L54wQbb4lQX5bDWmI=
+         processor:
+           checkpoint-store:
+             account-name: eventhubrajivstorage
+             account-key: alIvu48fTIrHx7s5tYjEBxG8pfjyDLxVlvqecLSTF3aKWp1wYzcNwgm5O/YPbd/nc54YeeHBESbx+ASt+BrqAg==
+             container-name: eventhubrajivstoragecontainer
+     stream:
+       bindings:
+         consume-in-0:
+           destination: eventhubrajivmain
+           group: $Default
+         supply-out-0:
+           destination: eventhubrajivmain
+
+       eventhubs:
+         bindings:
+           consume-in-0:
+             consumer:
+               checkpoint:
+                 mode: MANUAL
+       function:
+         definition: consume;supply;
+       poller:
+         initial-delay: 0
+         fixed-delay: 1000
