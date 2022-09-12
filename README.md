@@ -23,3 +23,5 @@ We have a consumer in application using reactor framework which consumes the mes
 
 Thanks
 Rajiv Sinha
+
+https://docs.microsoft.com/en-us/azure/developer/java/spring-framework/configure-spring-cloud-stream-binder-java-app-azure-event-hub
